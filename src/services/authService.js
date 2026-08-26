@@ -1,0 +1,2 @@
+// Replace with Supabase Auth later. UI remains independent of provider.
+export async function login(){throw new Error('Authentication is not connected yet.')}export async function signup(){throw new Error('Authentication is not connected yet.')}
