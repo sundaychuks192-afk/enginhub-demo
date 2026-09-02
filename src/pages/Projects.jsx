@@ -1,18 +1,1 @@
-import { Link } from 'react-router-dom';
-
-export default function Projects() {
-  return (
-    <div className="container">
-      <span className="eyebrow">ENGINEERING PROJECTS</span>
-      <h1>My Projects</h1>
-      <p className="lead">A future workspace for designing, testing and documenting engineering ideas.</p>
-      <div className="card">
-        <span className="tag">MVP PREVIEW</span>
-        <h2>Project Builder</h2>
-        <p>Students will eventually define a problem, research it, design a solution, test it, record results and build a portfolio entry.</p>
-        <button className="primary button">Create project — coming soon</button>
-      </div>
-      <Link className="secondary" to="/workshop">Explore virtual workshop</Link>
-    </div>
-  );
-}
+import{Link}from'react-router-dom';export default function Projects(){return <div className="container-wide page-pad"><div className="project-feature"><div className="project-copy"><span className="eyebrow">PROJECT WORKSPACE</span><h1>Turn learning into something you can <em>build.</em></h1><p>Create a project, define the problem, calculate, design, simulate and document the result. Your finished work can become part of an EngiHub portfolio.</p><div className="steps">{['Problem','Research','Design','Simulation','Results','Portfolio'].map((x,i)=><span key={x}><b>{i+1}</b>{x}</span>)}</div></div><div className="project-visual">ENGINEERING<br/><em>WORKSPACE</em></div></div><div className="project-cards"><div><span className="eyebrow">MY PROJECTS</span><h2>No projects yet.</h2><p>Your first project could start from a course challenge or something you want to build yourself.</p><button className="primary" onClick={()=>alert('Project creation flow: problem statement → requirements → design → simulation → report.')}>＋ Start a project</button></div><div><span className="eyebrow">PORTFOLIO</span><h2>Prove what you can do.</h2><p>Eventually your certificates, skills, projects, challenges and practical work will live here.</p></div></div><Link className="secondary" to="/workshop">← Back to Lab</Link></div>}

@@ -1,21 +1,3 @@
-import { Link } from 'react-router-dom';
-
-export default function AITutor() {
-  return (
-    <div className="container">
-      <span className="eyebrow">ENGIHUB AI</span>
-      <h1>Engineering AI Tutor</h1>
-      <p className="lead">Ask for explanations, hints and guided problem-solving help. The secure AI connection will be added after the backend is connected.</p>
-      <div className="card">
-        <h2>How it will work</h2>
-        <p>EngiHub will provide the course context to a server-side AI service so students can ask questions without exposing provider secrets in the browser.</p>
-        <div className="feature-grid">
-          {['Explain a concept','Give a hint','Explain a mistake','Generate practice'].map(x => (
-            <div className="card" key={x}><span className="tag">PLANNED</span><h3>{x}</h3><p>AI-assisted learning feature.</p></div>
-          ))}
-        </div>
-      </div>
-      <Link className="secondary" to="/courses">Back to courses</Link>
-    </div>
-  );
-}
+import{useState}from'react';
+const starter=['Explain this formula in simple terms','Give me a similar PTI question','Why is acceleration negative here?'];
+export default function AITutor(){const[q,setQ]=useState('');const[messages,setMessages]=useState([{role:'bot',text:'Hi, Engineer. I have MEC 124 Linear Motion in context. What should we unpack?'}]);function ask(text=q){if(!text.trim())return;setMessages(m=>[...m,{role:'user',text},{role:'bot',text.toLowerCase().includes('formula')?'Start from the physical meaning: each symbol describes something measurable. I would explain the variables first, then derive the relationship and finish with a PTI-style example.':'Let’s work from first principles. I’ll connect the concept to your MEC 124 lesson, show the engineering meaning, then give you a similar question to test it.'}]);setQ('')}return <div className="ai-page container-wide page-pad"><div className="ai-hero"><span className="eyebrow">ENGIHUB ENGINE • COURSE-AWARE AI</span><h1>Your engineering <em>copilot.</em></h1><p>Ask about the lesson, your notes, a calculation or a mistake. The production version will ground responses in your EngiHub course library.</p></div><div className="ai-grid"><aside className="ai-context"><span className="eyebrow">ACTIVE CONTEXT</span><h3>Linear Motion</h3><p>MEC 124 • Engineering Mechanics II</p><div className="context-item">✓ Course lesson</div><div className="context-item">✓ Your lecture notes</div><div className="context-item">✓ PTI question bank</div><div className="context-item">✓ Your recent mistakes</div><div className="starter-list">{starter.map(s=><button key={s} onClick={()=>ask(s)}>{s} ↗</button>)}</div></aside><main className="chat"><div className="chat-top"><span>● Ready</span><b>EngiHub Engine</b></div><div className="chat-body">{messages.map((m,i)=><div key={i} className={`bubble ${m.role}`}>{m.text}</div>)}</div><div className="prompt-row"><input value={q} onChange={e=>setQ(e.target.value)} onKeyDown={e=>e.key==='Enter'&&ask()} placeholder="Ask: Why does v² = u² + 2as work?"/><button className="primary" onClick={()=>ask()}>Ask →</button></div></main></div></div>}

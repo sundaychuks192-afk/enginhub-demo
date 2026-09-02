@@ -6,30 +6,33 @@ import Courses from './pages/Courses';
 import Topic from './pages/Topic';
 import Practice from './pages/Practice';
 import Login from './pages/Login';
-import ComingSoon from './pages/ComingSoon';
 import AITutor from './pages/AITutor';
 import Projects from './pages/Projects';
 import Workshop from './pages/Workshop';
+import AcademicSetup from './pages/AcademicSetup';
 import { LecturerDashboard, AdminDashboard } from './pages/RoleDashboards';
 
-export default function App() {
-  return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/courses" element={<Courses />} />
-        <Route path="/topic" element={<Topic />} />
-        <Route path="/practice" element={<Practice />} />
-        <Route path="/ai-tutor" element={<AITutor />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/workshop" element={<Workshop />} />
-        <Route path="/lecturer" element={<LecturerDashboard />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/coming-soon" element={<ComingSoon />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Route>
-    </Routes>
-  );
+function RequireAuth({children}) {
+  const user = localStorage.getItem('engihub_user');
+  return user ? children : <Navigate to="/login" replace />;
+}
+
+export default function App(){
+ return <Routes>
+  <Route element={<Layout />}>
+   <Route path="/" element={<Home/>}/>
+   <Route path="/login" element={<Login/>}/>
+   <Route path="/setup" element={<RequireAuth><AcademicSetup/></RequireAuth>}/>
+   <Route path="/dashboard" element={<RequireAuth><Dashboard/></RequireAuth>}/>
+   <Route path="/courses" element={<RequireAuth><Courses/></RequireAuth>}/>
+   <Route path="/topic" element={<RequireAuth><Topic/></RequireAuth>}/>
+   <Route path="/practice" element={<RequireAuth><Practice/></RequireAuth>}/>
+   <Route path="/ai-tutor" element={<RequireAuth><AITutor/></RequireAuth>}/>
+   <Route path="/workshop" element={<RequireAuth><Workshop/></RequireAuth>}/>
+   <Route path="/projects" element={<RequireAuth><Projects/></RequireAuth>}/>
+   <Route path="/lecturer" element={<RequireAuth><LecturerDashboard/></RequireAuth>}/>
+   <Route path="/admin" element={<RequireAuth><AdminDashboard/></RequireAuth>}/>
+   <Route path="*" element={<Navigate to="/" replace/>}/>
+  </Route>
+ </Routes>
 }

@@ -1,121 +1,35 @@
-# EngiHub
+# EngiHub V1 — Redesigned prototype
 
-EngiHub is an engineering education and digital engineering platform for engineering students.
+EngiHub is an engineering education and digital engineering platform: Learn → Understand → Practise → Simulate → Build.
 
-## Product vision
-
-**Learn → Understand → Visualize → Practice → Simulate → Diagnose → Design → Build**
-
-The MVP focuses on a strong engineering-learning foundation. Future phases add a secure AI tutor, Supabase-backed accounts/content/progress, virtual practicals, 3D engineering models, fault diagnosis, a virtual engineering workshop, project building, portfolios, skill courses and institutional tools.
-
-## Current MVP
-
-- Engineering-focused landing page
-- Student dashboard
-- Course/topic structure
-- Topic explanation with formulas and real-world application
-- Practice questions
-- Flashcards
-- Login UI ready for Supabase Auth
-- Lecturer dashboard/management roadmap
-- Admin dashboard/management roadmap
-- AI tutor entry point (UI/integration placeholder)
-- Virtual engineering workshop roadmap
-- Student project area
-- Skill courses and certificates roadmap
-- Mobile-responsive UI
-- Vercel SPA routing configuration
-- Provider-independent service layer
-
-## Technology
-
-- React 18
-- Vite
-- React Router
-- GitHub for source control
-- Vercel for deployment
-- Supabase planned for production authentication/database/storage
-- AI provider planned through a secure server-side function
-
-## Important security rule
-
-Never put a secret AI API key in frontend code or in a `VITE_*` variable. AI secrets belong on a server-side function/backend.
-
-## Local development
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Production build check:
+## Production integration checklist
 
-```bash
-npm run build
-```
+1. Connect the repository to the existing Vercel project.
+2. Add Supabase Auth for production login/signup/session management.
+3. Add Supabase Postgres tables for institutions, departments, levels, courses, topics, lessons, questions, users and progress.
+4. Add Supabase Storage for lecture notes, PDFs, images and video assets.
+5. Put the AI provider behind a secure server/API route; never expose provider secrets in VITE_* variables.
+6. Replace demo/localStorage content with the database adapters in `src/services/`.
+7. Add the actual PTI curriculum and verified PTI past-question bank.
+8. Connect hosted video/audio assets and the physics/3D engine for virtual labs.
 
-## GitHub → Vercel workflow
+The current prototype intentionally uses demo data so the UI can be explored without credentials.
 
-1. Extract this ZIP.
-2. Create/open the EngiHub repository on GitHub.
-3. Upload the **contents of this project folder**, so `package.json`, `index.html`, `vite.config.js`, `vercel.json`, `src/`, and `public/` (if present) are at the repository root.
-4. Commit the files.
-5. Open Vercel and import the GitHub repository.
-6. Vercel should detect Vite. Build command: `npm run build`. Output directory: `dist`.
-7. Deploy.
-8. After deployment, connect a custom domain later if desired.
+## MVP academic flow update
 
-Do not upload the ZIP file itself as the application source. Extract it first and upload the project files.
+The MVP now uses the intended academic hierarchy: School → Department → Level → Semester. PTI and Mechanical Engineering ND1 are the active path. ND2/HND1/HND2, other departments, and other listed institutions are presented as Coming Soon. There is no ND3. The Virtual Lab remains platform-wide and is kept separate from the academic course hierarchy so the future multiplayer workshop can be expanded without restructuring the learning flow.
 
-## Supabase plan
+## Supabase production setup
 
-Supabase is not connected in this MVP yet. The service layer is prepared for a later connection.
+The login now uses real Supabase Auth. Before deploying, add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` to Vercel Project Settings → Environment Variables for Production (and Preview if desired), then redeploy. For Google login, enable Google under Supabase Authentication → Providers and configure the Google OAuth client with the production site URL and Supabase callback URL. The app intentionally shows a clear configuration error instead of silently pretending login succeeded when Supabase is not configured.
 
-Likely future data:
-- profiles
-- departments
-- courses
-- topics
-- lessons
-- questions
-- progress
-- assignments
-- projects
-- certificates
-- AI usage records
+## Current academic priority
 
-When Supabase is added, use Supabase Auth and database security policies. Do not store plaintext passwords.
-
-## AI plan
-
-The AI tutor is intentionally not connected in this ZIP. The frontend has an integration point in `src/services/aiService.js`.
-
-The long-term cost strategy is to pre-create reusable course explanations, summaries, flashcards, questions and worked examples, and use AI mainly for personalized help.
-
-## Project structure
-
-```text
-src/
-  data/          Demo educational data
-  layouts/       Shared application layout
-  pages/         Product screens
-  services/      Backend/AI integration boundaries
-  styles/        Global UI styles
-```
-
-## Next development order
-
-1. Put this project on GitHub.
-2. Deploy the frontend on Vercel.
-3. Replace demo authentication with Supabase Auth.
-4. Move course/content/progress data to Supabase.
-5. Add a secure server-side AI tutor.
-6. Add videos/animations and richer topic content.
-7. Build virtual practicals and simulations.
-8. Build the virtual engineering workshop.
-9. Build the engineering project builder and portfolio.
-10. Add premium/institutional features after validating student demand.
-
-## Do not rebuild the entire app unnecessarily
-
-Continue from this foundation. Keep the engineering/blueprint visual identity and add features incrementally.
+ND1 Mechanical Engineering → Second Semester is the active semester now. First Semester is displayed as a future/upcoming content area and does not block Second Semester access.

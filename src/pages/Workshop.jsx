@@ -1,24 +1,3 @@
-import { Link } from 'react-router-dom';
-
-const features = [
-  ['Virtual Laboratory', 'Practice procedures and experiments digitally.'],
-  ['3D Engineering Models', 'Explore components and systems interactively.'],
-  ['Fault Diagnosis', 'Investigate symptoms, measurements and possible causes.'],
-  ['Project Workspace', 'Design and document engineering projects.'],
-];
-
-export default function Workshop() {
-  return (
-    <div className="container">
-      <span className="eyebrow">ENGIHUB WORKSHOP</span>
-      <h1>Virtual Engineering Workshop</h1>
-      <p className="lead">The long-term goal is a digital workshop where engineering students can inspect, test, diagnose and design.</p>
-      <div className="feature-grid">
-        {features.map(([title, text]) => (
-          <div className="card" key={title}><span className="tag">ROADMAP</span><h2>{title}</h2><p>{text}</p></div>
-        ))}
-      </div>
-      <Link className="primary" to="/projects">Open project area</Link>
-    </div>
-  );
-}
+import{useState}from'react';
+const labs=[['⚡','Electrical Lab','Build circuits, measure signals and troubleshoot faults.'],['⚙','Mechanical Lab','Inspect machines, assemble components and diagnose failures.'],['🏗','Civil Lab','Test structures, loads and materials in simulation.'],['🧪','Chemical Lab','Explore processes, variables and safe virtual experiments.']];
+export default function Workshop(){const [lab,setLab]=useState('Electrical Lab');return <div className="lab-page"><section className="lab-hero"><div className="lab-hero-bg"/><div className="lab-hero-overlay"/><div className="container-wide lab-hero-content"><span className="eyebrow">ENGIHUB LAB • VIRTUAL PRACTICALS</span><h1>Don't just read<br/><em>about engineering.</em><br/>Go inside it.</h1><p>A game-like engineering environment where students can build, test, experiment, troubleshoot and learn safely.</p></div></section><div className="container-wide page-pad"><div className="section-head lab-heading"><div><span className="eyebrow">CHOOSE YOUR LAB</span><h2>Build. Break. Diagnose. Learn.</h2></div><span>V1 is the foundation for interactive simulations.</span></div><div className="lab-grid">{labs.map(([icon,title,text])=><button className={lab===title?'lab-card active':'lab-card'} key={title} onClick={()=>setLab(title)}><div className="lab-icon">{icon}</div><span className="eyebrow">VIRTUAL LAB</span><h2>{title}</h2><p>{text}</p><span className="secondary">Enter workspace →</span></button>)}</div><section className="simulator"><div className="sim-copy"><span className="eyebrow">SIMULATION PREVIEW • {lab.toUpperCase()}</span><h2>{lab === 'Electrical Lab' ? 'Build a simple circuit.' : 'Prepare the interactive workspace.'}</h2><p>{lab==='Electrical Lab'?'Select components, connect them and test what happens. This preview demonstrates the interaction model; the full 3D simulator will use a dedicated physics engine.':'The same build → test → diagnose pattern will power this lab as its simulator is added.'}</p><div className="sim-actions"><button className="primary" onClick={()=>alert(`${lab} simulator preview opened. Connect the production physics/3D engine here.`)}>▶ Launch simulation</button><button className="glass dark-glass">Reset</button></div></div>{lab==='Electrical Lab'?<div className="circuit-board"><div className="component battery">＋<small>9V</small></div><div className="wire w1"/><button className="component switch" onClick={e=>e.currentTarget.classList.toggle('on')}>SW</button><div className="wire w2"/><div className="component resistor">R 220Ω</div><div className="wire w3"/><div className="component led">●<small>LED</small></div><div className="wire w4"/><div className="wire w5"/></div>:<div className="sim-placeholder"><span>3D</span><b>INTERACTIVE LAB SPACE</b><small>components • instruments • measurements</small></div>}</section><section className="workshop-preview"><div><span className="eyebrow">THE LONG-TERM VISION</span><h2>Engineering Workshop</h2><p>Design systems, select components, run calculations, simulate behaviour, improve the design and document the project.</p></div><div className="blueprint"><div className="wire wire-a"/><div className="wire wire-b"/><div className="wire wire-c"/><span>MOTOR / ASSEMBLY</span></div></section></div></div>}
