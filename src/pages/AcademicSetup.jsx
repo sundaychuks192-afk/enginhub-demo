@@ -18,10 +18,10 @@ export default function AcademicSetup(){
  const isDeptOk=department===workingDepartment;
  const isLevelOk=level==='ND1';
  const save=(nextSemester)=>{
-  if(!isSchoolOk){setMessage('This institution is coming soon. Please select PTI for the working MVP.');return;}
-  if(!isDeptOk){setMessage('This department is coming soon in the current MVP.');return;}
-  if(!isLevelOk){setMessage('Only ND1 is active in this MVP.');return;}
-  if(nextSemester==='First Semester'){setMessage('First Semester is coming soon in this MVP.');return;}
+  if(!isSchoolOk){setMessage('This institution is coming soon. Please select PTI for the current EngiHub workspace.');return;}
+  if(!isDeptOk){setMessage('This department is coming soon in the current EngiHub release.');return;}
+  if(!isLevelOk){setMessage('Only ND1 is active in the current EngiHub release.');return;}
+  if(nextSemester==='First Semester'){setMessage('First Semester is coming soon in the current EngiHub release.');return;}
   
   const user={...existing,institution:school,department,level,semester:nextSemester,firstSemesterCompleted:completedFirst};
   localStorage.setItem('engihub_user',JSON.stringify(user));
@@ -49,7 +49,7 @@ export default function AcademicSetup(){
     <button className="semester disabled" onClick={()=>save('First Semester')}><span>01</span><div><b>First Semester</b><small>Coming Soon</small></div></button>
     <button className={completedFirst?'semester ready':'semester'} onClick={()=>save('Second Semester')}><span>02</span><div><b>Second Semester</b><small>ACTIVE NOW • Enter workspace</small></div></button>
    </div>
-   <div className="setup-message">Second Semester is the current active semester for ND1 Mechanical Engineering. First Semester is retained for future/upcoming students and will be updated later.</div>
+   <div className="setup-message">Second Semester is the current active semester for ND1 Mechanical Engineering. First Semester remains visible as an upcoming academic workspace and will be populated with its full content later.</div>
    {message&&<div className="setup-message">{message}</div>}
   </section>
  </div>
