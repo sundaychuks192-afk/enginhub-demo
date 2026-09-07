@@ -3,10 +3,16 @@ export const departments = ['Mechanical Engineering','Electrical/Electronic Engi
 export const levels = ['ND1','ND2','HND1','HND2'];
 export const activeProgram = { institution:'Petroleum Training Institute (PTI)', department:'Mechanical Engineering', level:'ND1', semester:'Second Semester' };
 export const courses = [
- {code:'MEC 124',name:'Engineering Mechanics II',progress:68,topics:12,image:'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=85'},
- {code:'MEC 125',name:'Machine Tools & Practice',progress:42,topics:9,image:'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=85'},
- {code:'MEC 126',name:'Workshop Technology',progress:25,topics:14,image:'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=1200&q=85'},
- {code:'MEC 127',name:'Technical Drawing II',progress:15,topics:10,image:'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=85'}
+ {code:'MEC 121',name:'Engineering Graphics',progress:0,topics:0,image:'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=85'},
+ {code:'MEC 122',name:'Thermodynamics I',progress:0,topics:0,image:'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=85'},
+ {code:'MEC 123',name:'Machine Tools Technology and Practice',progress:0,topics:0,image:'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=85'},
+ {code:'MEC 124',name:'Engineering Mechanics II (Dynamics)',progress:0,topics:0,image:'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=85'},
+ {code:'MEC 125',name:'Automotive Technology and Practice I',progress:0,topics:0,image:'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=1200&q=85'},
+ {code:'MEC 126',name:'Welding Technology and Practice',progress:0,topics:0,image:'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=1200&q=85'},
+ {code:'PGT 126',name:'Basic Petroleum Processing Technology',progress:0,topics:0,image:'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=85'},
+ {code:'WEC 125',name:'Basic Offshore Safety',progress:0,topics:0,image:'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=85'},
+ {code:'GNS 201',name:'Use of English II (Essay and Comprehension)',progress:0,topics:0,image:'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=85'},
+ {code:'MTH 122',name:'Trigonometric and Analytical Geometry',progress:0,topics:0,image:'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=85'}
 ];
 export const leaderboard = [['Chinedu',1480],['Gift',1410],['Emmanuel',1260],['Precious',1180],['John',1020],['Aisha',960],['Daniel',920]];
 export const readiness = [['Linear Motion',92],['Projectile Motion',78],['Work & Energy',61],['Momentum',43]];
